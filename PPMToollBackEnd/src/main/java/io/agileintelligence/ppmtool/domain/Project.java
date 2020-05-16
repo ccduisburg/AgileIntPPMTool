@@ -13,6 +13,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank(message="Project name is required")
+   // @Column(nullable = false)
     private String projectName;
     @NotBlank(message="Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 to 5 characters")
@@ -28,6 +29,7 @@ public class Project {
     private Date createdAt;
     @JsonFormat(locale = "dd-mm-yyyy")
     private Date updatedAt;
+
 
     public Long getId() {
         return id;
