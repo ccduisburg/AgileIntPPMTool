@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -14,25 +12,22 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message="Project name is required")
+    @NotBlank(message="Project name is required")
     private String projectName;
-    @NotEmpty(message="Project Identifier is required")
+    @NotBlank(message="Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
     @NotBlank(message = "Project description is required")
     private String description;
     @JsonFormat(locale = "dd-mm-yyyy")
-    private Date start_date;
+    private Date startDate;
     @JsonFormat(locale = "dd-mm-yyyy")
-    private Date end_date;
+    private Date endDate;
     @JsonFormat(locale = "dd-mm-yyyy")
-    private Date created_At;
+    private Date createdAt;
     @JsonFormat(locale = "dd-mm-yyyy")
-    private Date updated_At;
-
-    public Project() {
-    }
+    private Date updatedAt;
 
     public Long getId() {
         return id;
@@ -66,45 +61,45 @@ public class Project {
         this.description = description;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Date getCreated_At() {
-        return created_At;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_At(Date created_At) {
-        this.created_At = created_At;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getUpdated_At() {
-        return updated_At;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated_At(Date updated_At) {
-        this.updated_At = updated_At;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @PrePersist
     protected void onCreate(){
-    this.created_At=new Date();
+    this.createdAt=new Date();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updated_At=new Date();
+        this.updatedAt=new Date();
     }
 
 
