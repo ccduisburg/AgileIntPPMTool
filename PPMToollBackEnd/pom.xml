@@ -12,7 +12,7 @@
     <artifactId>ppmtool</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ppmtool</name>
-    <description>Projekt MAnagement Tool</description>
+    <description>Project Management Tool</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -54,6 +54,11 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
         </dependency>
     </dependencies>
 
