@@ -22,14 +22,24 @@ public class ProjectService {
     }
 
     public Project findProjectByIdentifier(String projectId) {
-        Project project =projectRepository.findByProjectIdentifier(projectId.toUpperCase());
-        if(project==null){
-            throw new ProjectIdException("Project ID '" +projectId+ " does not exists");
+        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+        if (project == null) {
+            throw new ProjectIdException("Project ID '" + projectId + " does not exists");
         }
         return project;
     }
 
-    public Iterable<Project> findAllProjects(){
+    public Iterable<Project> findAllProjects() {
         return projectRepository.findAll();
+    }
+
+    public void deleteProjectByIdentifier(String projectid) {
+        Project project = projectRepository.findByProjectIdentifier(projectid.toUpperCase());
+
+        if(project == null){
+            throw  new  ProjectIdException("Cannot Project with ID '"+projectid+"'. This project does not exist");
+        }
+
+        projectRepository.delete(project);
     }
 }
